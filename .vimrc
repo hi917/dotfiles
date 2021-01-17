@@ -1,3 +1,7 @@
+" Color Scheme
+syntax enable
+colorscheme monokai
+
 " Line Number
 set number  " print the line number in front of each line
 set relativenumber  " show relative line number in front of each line
@@ -22,5 +26,13 @@ set splitright  " new window is put right of the current one
 
 " Vim Behavior
 set nobackup  " disable keep backup file after overwriting a file
-set noswapfile " disable writing intermediate swap files
+set noswapfile  " disable writing intermediate swap files
+set visualbell  " use visual bell; no beep
 set wildmenu  " make tab completion for files/buffers act like bash
+
+" Mappings
+nnoremap <C-H> <C-W><C-H> 
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+
