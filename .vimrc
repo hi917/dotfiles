@@ -1,6 +1,7 @@
 " === Plugins
 call plug#begin('~/.vim/plugged')
 " Utility
+Plug 'mbbill/undotree'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdtree'
 
@@ -17,9 +18,6 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
     \ quit | endif
 let g:NERDTreeDirArrowExpandable = '▸'  " Change default NERDTree arrows
 let g:NERDTreeDirArrowCollapsible = '▾' " Change default NERDTree arrows
-
-" FZF
-"let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
 
 " === Appearance
 syntax enable  " Enable syntax highlighting
@@ -59,6 +57,8 @@ set nobackup  " Disable keep backup file after overwriting a file
 set noswapfile  " Disable writing intermediate swap files
 set visualbell  " Use visual bell; no beep
 set wildmenu  " Make tab completion for files/buffers act like bash
+set undofile  " Maintain undo history between sessions
+set undodir=~/.vim/undofiles  " Set undo directory
 
 " === Mappings
 let mapleader = ','
@@ -67,4 +67,5 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
-nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
