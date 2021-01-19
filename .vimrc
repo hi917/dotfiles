@@ -1,16 +1,33 @@
+" Install plug.vim if not installed
+let install_plugins = 0
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    let install_plugins = 1
+endif
+
 " === Plugins
 call plug#begin('~/.vim/plugged')
 " Utility
+Plug 'preservim/tagbar'
+Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdtree'
 
-" === Appearance 
+" === Appearance
 Plug 'sheerun/vim-polyglot'
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'shinchu/lightline-gruvbox.vim'
 call plug#end()
+
+" Install plugins if plug.vim was installed
+if install_plugins == 1
+    echo 'Installing plugins...'
+    silent !PlugInstall
+    echo 'Done.'
+endif
 
 " NERDTree
 " Exit Vim if NERDTree is the only window left.
@@ -21,14 +38,14 @@ let g:NERDTreeDirArrowCollapsible = '▾' " Change default NERDTree arrows
 
 " === Appearance
 syntax enable  " Enable syntax highlighting
-set background=dark  " Dark background 
+set background=dark  " Dark background
 set termguicolors  " Enable true color support
 colorscheme gruvbox  " Set color scheme to gruvbox
 set noshowmode  " Remove mode message on the last line
 " Configure lightline
 let g:lightline = {
     \ 'colorscheme': 'gruvbox',
-    \ } 
+    \ }
 
 " === Line Number
 set number  " Print the line number in front of each line
@@ -43,7 +60,7 @@ set expandtab  " Make the tab key (in insert mode) insert spaces instead of a ta
 set shiftwidth=4  " The size of an 'indent', measured in spaces
 set smarttab  " Makes a <BS> delete a 'shiftwidth' worth of space at the start of the line.
 set softtabstop=4  " Make the tab key (in insert mode) insert spaces and tabs to simulate tab stops at this width
-set tabstop=4  " Make vim interpret <Tab> to be 4 spaces. 
+set tabstop=4  " Make vim interpret <Tab> to be 4 spaces.
 
 " === Text
 set nowrap  " Disable long lines wrapping and continuing on next line
@@ -59,13 +76,16 @@ set visualbell  " Use visual bell; no beep
 set wildmenu  " Make tab completion for files/buffers act like bash
 set undofile  " Maintain undo history between sessions
 set undodir=~/.vim/undofiles  " Set undo directory
+autocmd BufWritePre * %s/\s\+$//e  " Automatically remove trailing whitespace on save
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=0  " Disable automatic commenting on newline
 
 " === Mappings
-let mapleader = ','
+let mapleader = ' '
 nnoremap // :noh<CR>
-nnoremap <C-H> <C-W><C-H> 
+nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>u :UndotreeToggle<CR>
+nnoremap <leader>t :TagbarToggle<CR>
