@@ -1,0 +1,5 @@
+# Place at root level (~/.gitconfig)
+[alias]
+
+[core]
+    editor = vim
