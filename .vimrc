@@ -14,6 +14,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdtree'
+Plug 'dense-analysis/ale'
 
 " === Appearance
 Plug 'sheerun/vim-polyglot'
@@ -28,6 +29,19 @@ if install_plugins == 1
     silent !PlugInstall
     echo 'Done.'
 endif
+
+" Ale
+let g:ale_linters = {
+    \ '*': [],
+    \ 'python': ['flake8'],
+    \
+    \ }
+let g:ale_fixers = {
+    \ '*': [],
+    \ 'python': ['black', 'isort'],
+    \
+    \ }
+let g:ale_fix_on_save = 1
 
 " NERDTree
 " Exit Vim if NERDTree is the only window left.
@@ -73,7 +87,8 @@ set splitright  " New window is put right of the current one
 set nobackup  " Disable keep backup file after overwriting a file
 set noswapfile  " Disable writing intermediate swap files
 set visualbell  " Use visual bell; no beep
-set wildmenu  " Make tab completion for files/buffers act like bash
+set wildmenu  " Show menu on Tab
+set wildmode=list:longest,list:full " Bash like Tab completion
 set undofile  " Maintain undo history between sessions
 set undodir=~/.vim/undofiles  " Set undo directory
 autocmd BufWritePre * %s/\s\+$//e  " Automatically remove trailing whitespace on save
@@ -82,6 +97,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=0  
 " === Mappings
 let mapleader = ' '
 nnoremap // :noh<CR>
+nnoremap /n :set nu! rnu!<CR>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
