@@ -1,3 +1,5 @@
+set nocompatible " Use VIM settings over Vi settings; kinda a noop, but relevant when vi -u
+
 " Install plug.vim if not installed
 let install_plugins = 0
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -97,6 +99,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=0  
 " === Mappings
 let mapleader = ' '
 nnoremap // :noh<CR>
+nnoremap /w :set wrap!<CR>
 nnoremap /n :set nu! rnu!<CR>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
