@@ -101,6 +101,10 @@ let mapleader = ' '
 nnoremap // :noh<CR>
 nnoremap /w :set wrap!<CR>
 nnoremap /n :set nu! rnu!<CR>
+nnoremap [b :bprevious<CR>
+nnoremap ]b :bnext<CR>
+nnoremap [B :bfirst<CR>
+nnoremap ]B :blast<CR>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
