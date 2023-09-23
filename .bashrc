@@ -118,4 +118,4 @@ alias llah="ls -lah"
 alias vi="/usr/bin/vim"
 
 #PS1='\[\e[32m\]\u\[\e[32m\]@\[\e[32m\]\H\[\e[0m\]:\[\e[93m\]\w \[\e[38;5;37m\](\[\e[38;5;37m\]$(git branch 2>/dev/null | grep '*' | colrm 1 2)\[\e[38;5;37m\])\n\[\e[0m\]\$'
-PS1="\[\033[36m\]\D{%Y-%m-%d-%I:%M%p}\[\033[00m\] \[\033[95m\]\u@$WSL_DISTRO_NAME\[\033[00m\]:\[\033[35m\]\w\[\033[00m\]$ "
+PS1='\[\e[32m\]\u\[\e[32m\]@\[\e[32m\]\H\[\e[0m\]:\[\e[93m\]\w \[\e[38;5;37m\](\[\e[38;5;37m\]$(git branch --show-current 2>/dev/null)\[\e[38;5;37m\])\n\[\e[0m\]\$'
